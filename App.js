@@ -1,5 +1,12 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, StatusBar, Text} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  Text,
+  View,
+  TextInput,
+} from 'react-native';
 
 class App extends React.Component {
   render() {
@@ -7,7 +14,16 @@ class App extends React.Component {
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.container}>
-          <Text>Save Image</Text>
+          <View style={styles.app}>
+            <Text style={styles.headerText}>React Native Image Downloader</Text>
+            <View style={styles.textInputWrapper}>
+              <TextInput
+                placeholder="Enter image url here"
+                style={styles.textInput}
+              />
+            </View>
+            <Text>Save Image</Text>
+          </View>
         </SafeAreaView>
       </>
     );
@@ -22,5 +38,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  app: {
+    backgroundColor: '#11131B',
+    flex: 1,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    paddingVertical: 30,
+  },
+  headerText: {
+    marginTop: 50,
+    fontSize: 26,
+    color: 'white',
+  },
+  textInputWrapper: {
+    marginTop: 30,
+    alignSelf: 'stretch',
+    padding: 10,
+  },
+  textInput: {
+    padding: 10,
+    backgroundColor: '#EFEFEF',
+    borderWidth: 1,
+    borderColor: '#DDD',
+    borderRadius: 3,
   },
 });
