@@ -6,10 +6,21 @@ import {
   Text,
   View,
   TextInput,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 
 class App extends React.Component {
+  state = {
+    url: '',
+  };
+
+  updateUrl = url => {
+    this.setState({url});
+  };
+
   render() {
+    const {url} = this.state;
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -20,9 +31,14 @@ class App extends React.Component {
               <TextInput
                 placeholder="Enter image url here"
                 style={styles.textInput}
+                value={url}
+                onChangeText={text => this.updateUrl(text)}
               />
             </View>
-            <Text>Save Image</Text>
+            <Image source={{uri: url}} style={styles.imagePreview} />
+            <TouchableOpacity style={styles.downloadButton}>
+              <Text>Download Image</Text>
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
       </>
@@ -61,6 +77,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#EFEFEF',
     borderWidth: 1,
     borderColor: '#DDD',
+    borderRadius: 3,
+  },
+  imagePreview: {
+    height: 300,
+    width: 300,
+    backgroundColor: 'purple',
+    marginTop: 30,
+  },
+  downloadButton: {
+    backgroundColor: 'white',
+    marginTop: 40,
+    paddingHorizontal: 40,
+    paddingVertical: 20,
     borderRadius: 3,
   },
 });
